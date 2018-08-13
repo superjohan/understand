@@ -47,6 +47,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
                 "by jumalauta\n" +
                 "\n" +
                 "programming and music by ylvaes\n" +
+                "modeling by spiikki\n" + // FIXME: use jml nick
                 "\n" +
                 "presented at jumalauta 18 years (2018)\n" +
                 "\n" +
