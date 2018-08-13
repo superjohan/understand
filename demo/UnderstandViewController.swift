@@ -132,7 +132,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.understandLabel.baselineAdjustment = .alignCenters
         self.understandLabel.isHidden = true
         self.understandLabel.shadowColor = .black
-        self.understandLabel.shadowOffset = CGSize(width: 10, height: 10)
+        self.understandLabel.shadowOffset = CGSize(width: 5, height: 5)
         
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
