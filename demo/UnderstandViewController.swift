@@ -11,13 +11,14 @@ import AVFoundation
 import SceneKit
 import Foundation
 
-class ViewController: UIViewController, SCNSceneRendererDelegate {
+class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let audioPlayer: AVAudioPlayer
     let sceneView = SCNView()
     let camera = SCNNode()
     let startButton: UIButton
-    let qtFoolingBgView: UIView = UIView.init(frame: CGRect.zero)
-
+    let qtFoolingBgView: UIView = UIView.init(frame: .zero)
+    let understandLabel: UILabel = UILabel(frame: .zero)
+    
     // MARK: - UIViewController
     
     init() {
@@ -41,12 +42,12 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.camera.camera = camera // lol
         
         let startButtonText =
-            "\"some demo\"\n" +
-                "by dekadence\n" +
+            "\"understand\"\n" +
+                "by jumalauta\n" +
                 "\n" +
-                "programming and music by ricky martin\n" +
+                "programming and music by ylvaes\n" +
                 "\n" +
-                "presented at some party 2018\n" +
+                "presented at jumalauta 18 years (2018)\n" +
                 "\n" +
         "tap anywhere to start"
         self.startButton = UIButton.init(type: UIButtonType.custom)
@@ -70,6 +71,8 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.view.addSubview(self.sceneView)
 
+        self.view.addSubview(self.understandLabel)
+        
         self.view.addSubview(self.startButton)
     }
     
@@ -102,6 +105,14 @@ class ViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
         self.sceneView.isPlaying = true
         self.sceneView.isHidden = true
+
+        self.understandLabel.text = "UNDERSTAND"
+        self.understandLabel.frame = self.view.bounds
+        self.understandLabel.adjustsFontSizeToFitWidth = true
+        self.understandLabel.font = UIFont.systemFont(ofSize: 400)
+        self.understandLabel.textAlignment = .center
+        self.understandLabel.textColor = .white
+        self.understandLabel.baselineAdjustment = .alignCenters
 
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
