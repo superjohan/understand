@@ -18,6 +18,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let startButton: UIButton
     let qtFoolingBgView: UIView = UIView.init(frame: .zero)
     let understandLabel: UILabel = UILabel(frame: .zero)
+    let allFontNames: [String]
     
     // MARK: - UIViewController
     
@@ -55,12 +56,26 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.startButton.titleLabel?.numberOfLines = 0
         self.startButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         self.startButton.backgroundColor = UIColor.black
+
+        var fontNames: [String] = []
+        let ignoredFamilies: [String] = ["Arial", "Arial Hebrew", "Arial Rounded MT Bold", "Bodoni Ornaments", "Bradley Hand", "Chalkboard SE", "Chalkduster", "Marker Felt", "Papyrus", "Party LET"]
+        for familyName in UIFont.familyNames {
+            if ignoredFamilies.contains(familyName) {
+                continue
+            }
+            
+            for fontName in UIFont.fontNames(forFamilyName: familyName) {
+                fontNames.append(fontName)
+            }
+        }
         
+        self.allFontNames = fontNames
+            
         super.init(nibName: nil, bundle: nil)
         
         self.startButton.addTarget(self, action: #selector(startButtonTouched), for: UIControlEvents.touchUpInside)
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = .green // FIXME
         self.sceneView.backgroundColor = .black
         self.sceneView.delegate = self
         
@@ -113,7 +128,10 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.understandLabel.textAlignment = .center
         self.understandLabel.textColor = .white
         self.understandLabel.baselineAdjustment = .alignCenters
-
+        self.understandLabel.isHidden = true
+        self.understandLabel.shadowColor = .black
+        self.understandLabel.shadowOffset = CGSize(width: 10, height: 10)
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
@@ -146,9 +164,28 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     fileprivate func start() {
-        self.sceneView.isHidden = false
+//        self.sceneView.isHidden = false
+        
+        scheduleEvents()
         
         self.audioPlayer.play()
+    }
+    
+    private func scheduleEvents() {
+        let fontStartTime = 1.5
+        
+        for i in 0..<40 {
+            perform(#selector(updateFont), with: nil, afterDelay: (Double(i) * 2) + fontStartTime)
+        }
+    }
+    
+    @objc
+    private func updateFont() {
+        let index = Int(arc4random_uniform(UInt32(self.allFontNames.count)))
+        let fontName = self.allFontNames[index]
+        guard let font = UIFont(name: fontName, size: 400) else { return }
+        self.understandLabel.font = font
+        self.understandLabel.isHidden = false
     }
     
     fileprivate func createScene() -> SCNScene {
