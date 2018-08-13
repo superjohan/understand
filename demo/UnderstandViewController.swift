@@ -65,7 +65,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             }
             
             for fontName in UIFont.fontNames(forFamilyName: familyName) {
-                fontNames.append(fontName)
+                if fontName.lowercased().contains("bold") && fontName.lowercased().contains("italic") {
+                    fontNames.append(fontName)
+                }
             }
         }
         
