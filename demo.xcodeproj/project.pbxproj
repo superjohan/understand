@@ -12,6 +12,7 @@
 		9042B72C2056F88C000DB49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72B2056F88C000DB49A /* Assets.xcassets */; };
 		9042B72F2056F88C000DB49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */; };
 		905C6D56211C9A72000918ED /* audio.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 905C6D55211C9A72000918ED /* audio.m4a */; };
+		9079A82E21234C2100CB2583 /* SceneKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079A82D21234C2100CB2583 /* SceneKitUtils.swift */; };
 		90D065012122096B00BCF062 /* sini.dae in Resources */ = {isa = PBXBuildFile; fileRef = 90D064FF2122096B00BCF062 /* sini.dae */; };
 		90D065022122096B00BCF062 /* saha.dae in Resources */ = {isa = PBXBuildFile; fileRef = 90D065002122096B00BCF062 /* saha.dae */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		9042B72E2056F88C000DB49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9042B7302056F88C000DB49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		905C6D55211C9A72000918ED /* audio.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audio.m4a; sourceTree = "<group>"; };
+		9079A82D21234C2100CB2583 /* SceneKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitUtils.swift; sourceTree = "<group>"; };
 		90D064FF2122096B00BCF062 /* sini.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = sini.dae; sourceTree = "<group>"; };
 		90D065002122096B00BCF062 /* saha.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = saha.dae; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 		9042B7232056F88C000DB49A /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				9079A82D21234C2100CB2583 /* SceneKitUtils.swift */,
 				90D065002122096B00BCF062 /* saha.dae */,
 				90D064FF2122096B00BCF062 /* sini.dae */,
 				905C6D55211C9A72000918ED /* audio.m4a */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9079A82E21234C2100CB2583 /* SceneKitUtils.swift in Sources */,
 				9042B7272056F88C000DB49A /* UnderstandViewController.swift in Sources */,
 				9042B7252056F88C000DB49A /* AppDelegate.swift in Sources */,
 			);
