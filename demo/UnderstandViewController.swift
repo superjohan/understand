@@ -80,7 +80,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.startButton.addTarget(self, action: #selector(startButtonTouched), for: UIControlEvents.touchUpInside)
         
-        self.view.backgroundColor = .green // FIXME
+        self.view.backgroundColor = .black
         self.sceneView.backgroundColor = .black
         self.sceneView.delegate = self
         
@@ -169,7 +169,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     fileprivate func start() {
-//        self.sceneView.isHidden = false
+        self.sceneView.isHidden = false
         
         scheduleEvents()
         
