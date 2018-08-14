@@ -146,6 +146,13 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.audioPlayer.stop()
     }
     
+    // FIXME: remove
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        startButtonTouched(button: self.startButton)
+    }
+    
     // MARK: - SCNSceneRendererDelegate
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -208,11 +215,29 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         scene.rootNode.addChildNode(self.camera)
 
         // background
-        let box = SCNBox(width: 200, height: 200, length: 200, chamferRadius: 0)
+        let box = SCNBox(width: 400, height: 200, length: 200, chamferRadius: 0)
         box.firstMaterial?.diffuse.contents = UIColor.green
         let boxNode = SCNNode(geometry: box)
-        boxNode.position = SCNVector3Make(0, 0, -90)
+        boxNode.position = SCNVector3Make(0, 0, -170)
         scene.rootNode.addChildNode(boxNode)
+
+        let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
+        box2.firstMaterial?.diffuse.contents = UIColor.green
+        let boxNode2 = SCNNode(geometry: box2)
+        boxNode2.position = SCNVector3Make(20, 20, 0)
+        boxNode2.rotation = SCNVector4Make(0.2, 0.2, 0, 1.0)
+        scene.rootNode.addChildNode(boxNode2)
+        
+        boxNode2.runAction(
+            SCNAction.repeatForever(
+                SCNAction.rotateBy(
+                    x: CGFloat(-10 + Int(arc4random_uniform(20))),
+                    y: CGFloat(-10 + Int(arc4random_uniform(20))),
+                    z: CGFloat(-10 + Int(arc4random_uniform(20))),
+                    duration: TimeInterval(8 + arc4random_uniform(5))
+                )
+            )
+        )
 
         configureLight(scene)
         
@@ -224,18 +249,21 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         directionalLightNode.light = SCNLight()
         directionalLightNode.light?.type = SCNLight.LightType.directional
         directionalLightNode.light?.castsShadow = true
-        directionalLightNode.light?.shadowRadius = 30
-        directionalLightNode.light?.shadowColor = UIColor(white: 0, alpha: 0.75)
+        directionalLightNode.light?.shadowRadius = 0
+        directionalLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
         directionalLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        directionalLightNode.position = SCNVector3Make(0, 0, 40)
-        directionalLightNode.rotation = SCNVector4Make(1, 0, 0, 1)
+        directionalLightNode.position = SCNVector3Make(0, 0, 10)
+//        directionalLightNode.rotation = SCNVector4Make(1, 1, 0, 1)
         scene.rootNode.addChildNode(directionalLightNode)
 
-        let omniLightNode = SCNNode()
-        omniLightNode.light = SCNLight()
-        omniLightNode.light?.type = SCNLight.LightType.omni
-        omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        omniLightNode.position = SCNVector3Make(0, 0, 60)
-        scene.rootNode.addChildNode(omniLightNode)
+//        let omniLightNode = SCNNode()
+//        omniLightNode.light = SCNLight()
+//        omniLightNode.light?.type = SCNLight.LightType.omni
+//        omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
+//        omniLightNode.light?.castsShadow = true
+//        omniLightNode.light?.shadowRadius = 30
+//        omniLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
+//        omniLightNode.position = SCNVector3Make(0, 0, 60)
+//        scene.rootNode.addChildNode(omniLightNode)
     }
 }
