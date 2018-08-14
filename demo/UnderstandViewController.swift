@@ -236,6 +236,14 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
+        let sawNode = loadModel(name: "saha", textureName: nil, color: .green)
+        sawNode.position = SCNVector3Make(-20, -20, 0)
+        scene.rootNode.addChildNode(sawNode)
+        
+        let waveNode = loadModel(name: "sini", textureName: nil, color: .green)
+        waveNode.position = SCNVector3Make(20, -20, 0)
+        scene.rootNode.addChildNode(waveNode)
+        
         configureLight(scene)
         
         return scene
