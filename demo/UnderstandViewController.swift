@@ -206,13 +206,31 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.camera.position = SCNVector3Make(0, 0, 58)
         
         scene.rootNode.addChildNode(self.camera)
-        
+
+        // background
+        let box = SCNBox(width: 200, height: 200, length: 200, chamferRadius: 0)
+        box.firstMaterial?.diffuse.contents = UIColor.green
+        let boxNode = SCNNode(geometry: box)
+        boxNode.position = SCNVector3Make(0, 0, -90)
+        scene.rootNode.addChildNode(boxNode)
+
         configureLight(scene)
         
         return scene
     }
     
     fileprivate func configureLight(_ scene: SCNScene) {
+        let directionalLightNode = SCNNode()
+        directionalLightNode.light = SCNLight()
+        directionalLightNode.light?.type = SCNLight.LightType.directional
+        directionalLightNode.light?.castsShadow = true
+        directionalLightNode.light?.shadowRadius = 30
+        directionalLightNode.light?.shadowColor = UIColor(white: 0, alpha: 0.75)
+        directionalLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        directionalLightNode.position = SCNVector3Make(0, 0, 40)
+        directionalLightNode.rotation = SCNVector4Make(1, 0, 0, 1)
+        scene.rootNode.addChildNode(directionalLightNode)
+
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
         omniLightNode.light?.type = SCNLight.LightType.omni
