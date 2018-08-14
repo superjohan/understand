@@ -20,6 +20,8 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let understandLabel: UILabel = UILabel(frame: .zero)
     let allFontNames: [String]
     
+    var previousFontName: String? = nil
+    
     // MARK: - UIViewController
     
     init() {
@@ -184,8 +186,14 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     
     @objc
     private func updateFont() {
-        let index = Int(arc4random_uniform(UInt32(self.allFontNames.count)))
-        let fontName = self.allFontNames[index]
+        var fontName: String
+        repeat {
+            let index = Int(arc4random_uniform(UInt32(self.allFontNames.count)))
+            fontName = self.allFontNames[index]
+        } while fontName == self.previousFontName
+        
+        self.previousFontName = fontName
+        
         guard let font = UIFont(name: fontName, size: 400) else { return }
         self.understandLabel.font = font
         self.understandLabel.isHidden = false
