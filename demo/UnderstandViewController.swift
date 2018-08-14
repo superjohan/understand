@@ -59,7 +59,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.startButton.backgroundColor = UIColor.black
 
         var fontNames: [String] = []
-        let ignoredFamilies: [String] = ["Arial", "Arial Hebrew", "Arial Rounded MT Bold", "Bodoni Ornaments", "Bradley Hand", "Chalkboard SE", "Chalkduster", "Marker Felt", "Papyrus", "Party LET"]
+        let ignoredFamilies: [String] = ["Arial", "Arial Hebrew", "Arial Rounded MT Bold", "Bodoni Ornaments", "Bradley Hand", "Chalkboard SE", "Chalkduster", "Marker Felt", "Papyrus", "Party LET", "Rockwell"]
         for familyName in UIFont.familyNames {
             if ignoredFamilies.contains(familyName) {
                 continue
