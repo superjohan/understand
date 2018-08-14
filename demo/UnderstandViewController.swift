@@ -82,7 +82,6 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         
         self.view.backgroundColor = .black
         self.sceneView.backgroundColor = .black
-        self.sceneView.delegate = self
         
         self.qtFoolingBgView.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         
@@ -151,14 +150,6 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         super.viewDidAppear(animated)
         
         startButtonTouched(button: self.startButton)
-    }
-    
-    // MARK: - SCNSceneRendererDelegate
-
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        // this function is run in a background thread.
-//        DispatchQueue.main.async {
-//        }
     }
     
     // MARK: - Private
