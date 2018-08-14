@@ -36,7 +36,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         }
         
         let camera = SCNCamera()
-        camera.zFar = 600
+        camera.zFar = 300
 //        camera.vignettingIntensity = 1
 //        camera.vignettingPower = 1
 //        camera.colorFringeStrength = 3
