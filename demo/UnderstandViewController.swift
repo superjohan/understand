@@ -258,12 +258,11 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         scene.rootNode.addChildNode(self.camera)
 
         // background
-        let box = SCNBox(width: 300, height: 250, length: 200, chamferRadius: 0)
-        box.firstMaterial?.diffuse.contents = UIColor.green
-        let boxNode = SCNNode(geometry: box)
-        boxNode.position = SCNVector3Make(0, 0, -110)
-        boxNode.rotation = SCNVector4Make(0.0001, 0, 0, 0.001) // fixes flickering on ios 12 for some reason
-        scene.rootNode.addChildNode(boxNode)
+        let plane = SCNPlane(width: 300, height: 250)
+        plane.firstMaterial?.diffuse.contents = UIColor.green
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.position = SCNVector3Make(0, 0, -20)
+        scene.rootNode.addChildNode(planeNode)
 
         let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
         box2.firstMaterial?.diffuse.contents = UIColor.green
