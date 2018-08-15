@@ -299,7 +299,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         omniLightNode.light?.shadowRadius = 30
         omniLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
         omniLightNode.light?.attenuationFalloffExponent = 0
-        omniLightNode.light?.intensity = 10000
+        omniLightNode.light?.intensity = 3000
         omniLightNode.position = SCNVector3Make(-5, 5, 60)
         scene.rootNode.addChildNode(omniLightNode)
     }
