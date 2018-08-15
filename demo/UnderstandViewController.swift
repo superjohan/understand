@@ -47,9 +47,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
 //        camera.bloomBlurRadius = 40
 //        camera.wantsDepthOfField = true
 //        camera.focusDistance = 0.075
-//        camera.fStop = 2
+//        camera.fStop = 1
 //        camera.apertureBladeCount = 10
-//        camera.focalBlurSampleCount = 50
+//        camera.focalBlurSampleCount = 100
         self.camera.camera = camera // lol
         
         let startButtonText =
