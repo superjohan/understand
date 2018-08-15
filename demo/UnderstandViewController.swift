@@ -21,6 +21,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let allFontNames: [String]
     
     var previousFontName: String? = nil
+    var boxNode: SCNNode? = nil
+    var sawNode: SCNNode? = nil
+    var waveNode: SCNNode? = nil
     
     // MARK: - UIViewController
     
@@ -175,6 +178,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isHidden = false
         
         scheduleEvents()
+        resetAnimations()
         
         self.audioPlayer.play()
     }
@@ -200,6 +204,49 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         guard let font = UIFont(name: fontName, size: 400) else { return }
         self.understandLabel.font = font
         self.understandLabel.isHidden = false
+        
+        resetAnimations()
+    }
+    
+    private func resetAnimations() {
+        self.boxNode?.removeAllActions()
+        self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
+        self.boxNode?.runAction(
+            SCNAction.repeatForever(
+                SCNAction.rotateBy(
+                    x: 0.4,
+                    y: 0.7,
+                    z: 1,
+                    duration: 1.1
+                )
+            )
+        )
+
+        self.sawNode?.removeAllActions()
+        self.sawNode?.rotation = SCNVector4Make(0.2, 0.1, 0.2, 1)
+        self.sawNode?.runAction(
+            SCNAction.repeatForever(
+                SCNAction.rotateBy(
+                    x: CGFloat.pi,
+                    y: 0,
+                    z: 0,
+                    duration: 2
+                )
+            )
+        )
+
+        self.waveNode?.rotation = SCNVector4Make(0, 0, -2, 0.1)
+        self.waveNode?.removeAllActions()
+        self.waveNode?.runAction(
+            SCNAction.repeatForever(
+                SCNAction.rotateBy(
+                    x: CGFloat.pi,
+                    y: 0,
+                    z: 0.2,
+                    duration: 1.4
+                )
+            )
+        )
     }
     
     fileprivate func createScene() -> SCNScene {
@@ -214,7 +261,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let box = SCNBox(width: 300, height: 250, length: 200, chamferRadius: 0)
         box.firstMaterial?.diffuse.contents = UIColor.green
         let boxNode = SCNNode(geometry: box)
-        boxNode.position = SCNVector3Make(0, 0, -150)
+        boxNode.position = SCNVector3Make(0, 0, -110)
         boxNode.rotation = SCNVector4Make(0.0001, 0, 0, 0.001) // fixes flickering on ios 12 for some reason
         scene.rootNode.addChildNode(boxNode)
 
@@ -222,27 +269,22 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         box2.firstMaterial?.diffuse.contents = UIColor.green
         let boxNode2 = SCNNode(geometry: box2)
         boxNode2.position = SCNVector3Make(20, 20, 0)
-        boxNode2.rotation = SCNVector4Make(0.2, 0.2, 0, 1.0)
         scene.rootNode.addChildNode(boxNode2)
+        self.boxNode = boxNode2
         
-        boxNode2.runAction(
-            SCNAction.repeatForever(
-                SCNAction.rotateBy(
-                    x: CGFloat(-10 + Int(arc4random_uniform(20))),
-                    y: CGFloat(-10 + Int(arc4random_uniform(20))),
-                    z: CGFloat(-10 + Int(arc4random_uniform(20))),
-                    duration: TimeInterval(8 + arc4random_uniform(5))
-                )
-            )
-        )
-
         let sawNode = loadModel(name: "saha", textureName: nil, color: .green)
-        sawNode.position = SCNVector3Make(-20, -20, 0)
+        sawNode.position = SCNVector3Make(-40, 0, 0)
+        sawNode.scale = SCNVector3Make(1.3, 1.3, 1.3)
         scene.rootNode.addChildNode(sawNode)
+        self.sawNode = sawNode
         
         let waveNode = loadModel(name: "sini", textureName: nil, color: .green)
-        waveNode.position = SCNVector3Make(20, -20, 0)
+        waveNode.position = SCNVector3Make(-10, -20, 0)
+        waveNode.scale = SCNVector3Make(1.5, 1.5, 1.5)
         scene.rootNode.addChildNode(waveNode)
+        self.waveNode = waveNode
+        
+        resetAnimations()
         
         configureLight(scene)
         
@@ -254,7 +296,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         directionalLightNode.light = SCNLight()
         directionalLightNode.light?.type = SCNLight.LightType.directional
         directionalLightNode.light?.castsShadow = true
-        directionalLightNode.light?.shadowRadius = 0
+        directionalLightNode.light?.shadowRadius = 10
         directionalLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
         directionalLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
         directionalLightNode.position = SCNVector3Make(0, 0, 10)
