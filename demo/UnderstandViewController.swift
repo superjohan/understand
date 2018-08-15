@@ -291,25 +291,16 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     fileprivate func configureLight(_ scene: SCNScene) {
-        let directionalLightNode = SCNNode()
-        directionalLightNode.light = SCNLight()
-        directionalLightNode.light?.type = SCNLight.LightType.directional
-        directionalLightNode.light?.castsShadow = true
-        directionalLightNode.light?.shadowRadius = 10
-        directionalLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
-        directionalLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        directionalLightNode.position = SCNVector3Make(0, 0, 10)
-//        directionalLightNode.rotation = SCNVector4Make(1, 1, 0, 1)
-        scene.rootNode.addChildNode(directionalLightNode)
-
-//        let omniLightNode = SCNNode()
-//        omniLightNode.light = SCNLight()
-//        omniLightNode.light?.type = SCNLight.LightType.omni
-//        omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
-//        omniLightNode.light?.castsShadow = true
-//        omniLightNode.light?.shadowRadius = 30
-//        omniLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
-//        omniLightNode.position = SCNVector3Make(0, 0, 60)
-//        scene.rootNode.addChildNode(omniLightNode)
+        let omniLightNode = SCNNode()
+        omniLightNode.light = SCNLight()
+        omniLightNode.light?.type = SCNLight.LightType.omni
+        omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        omniLightNode.light?.castsShadow = true
+        omniLightNode.light?.shadowRadius = 30
+        omniLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
+        omniLightNode.light?.attenuationFalloffExponent = 0
+        omniLightNode.light?.intensity = 10000
+        omniLightNode.position = SCNVector3Make(-5, 5, 60)
+        scene.rootNode.addChildNode(omniLightNode)
     }
 }
