@@ -209,6 +209,15 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     private func resetScene() {
+        self.camera.removeAllActions()
+        self.camera.position = SCNVector3Make(-5, 0, 58)
+        self.camera.runAction(
+            SCNAction.move(
+                by: SCNVector3Make(10, 0, 0),
+                duration: 2
+            )
+        )
+        
         self.boxNode?.removeAllActions()
         self.boxNode?.position = SCNVector3Make(20, 20, 0)
         self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
