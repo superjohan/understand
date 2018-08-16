@@ -278,7 +278,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.sawNode = sawNode
         
         let waveNode = loadModel(name: "sini", textureName: nil, color: .yellow)
-        waveNode.position = SCNVector3Make(-10, -20, -10)
+        waveNode.position = SCNVector3Make(-5, -25, -10)
         waveNode.scale = SCNVector3Make(1.5, 1.5, 1.5)
         scene.rootNode.addChildNode(waveNode)
         self.waveNode = waveNode
