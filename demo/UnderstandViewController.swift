@@ -268,9 +268,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     fileprivate func createScene() -> SCNScene {
         let scene = SCNScene()
         scene.background.contents = UIColor.black
-        
-        self.camera.position = SCNVector3Make(0, 0, 58)
-        
+                
         scene.rootNode.addChildNode(self.camera)
 
         // background
