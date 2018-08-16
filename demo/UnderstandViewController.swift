@@ -261,7 +261,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let plane = SCNPlane(width: 300, height: 250)
         plane.firstMaterial?.diffuse.contents = UIColor.green
         let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(0, 0, -20)
+        planeNode.position = SCNVector3Make(0, 0, -17)
         scene.rootNode.addChildNode(planeNode)
 
         let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
