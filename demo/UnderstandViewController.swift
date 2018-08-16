@@ -210,6 +210,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     
     private func resetScene() {
         self.boxNode?.removeAllActions()
+        self.boxNode?.position = SCNVector3Make(20, 20, 0)
         self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
         self.boxNode?.runAction(
             SCNAction.repeatForever(
@@ -219,6 +220,12 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
                     z: 1,
                     duration: 1.1
                 )
+            )
+        )
+        self.boxNode?.runAction(
+            SCNAction.move(
+                by: SCNVector3Make(10, -5, 2),
+                duration: 2.5
             )
         )
 
@@ -267,7 +274,6 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
         box2.firstMaterial?.diffuse.contents = UIColor.red
         let boxNode2 = SCNNode(geometry: box2)
-        boxNode2.position = SCNVector3Make(20, 20, 0)
         scene.rootNode.addChildNode(boxNode2)
         self.boxNode = boxNode2
         
