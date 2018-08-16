@@ -261,7 +261,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let plane = SCNPlane(width: 300, height: 250)
         plane.firstMaterial?.diffuse.contents = UIColor.green
         let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(0, 0, -17)
+        planeNode.position = SCNVector3Make(0, 0, -20)
         scene.rootNode.addChildNode(planeNode)
 
         let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
@@ -272,13 +272,13 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.boxNode = boxNode2
         
         let sawNode = loadModel(name: "saha", textureName: nil, color: .blue)
-        sawNode.position = SCNVector3Make(-40, 0, 0)
+        sawNode.position = SCNVector3Make(-40, 0, -10)
         sawNode.scale = SCNVector3Make(1.3, 1.3, 1.3)
         scene.rootNode.addChildNode(sawNode)
         self.sawNode = sawNode
         
         let waveNode = loadModel(name: "sini", textureName: nil, color: .yellow)
-        waveNode.position = SCNVector3Make(-10, -20, 0)
+        waveNode.position = SCNVector3Make(-10, -20, -10)
         waveNode.scale = SCNVector3Make(1.5, 1.5, 1.5)
         scene.rootNode.addChildNode(waveNode)
         self.waveNode = waveNode
