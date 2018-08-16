@@ -178,7 +178,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isHidden = false
         
         scheduleEvents()
-        resetAnimations()
+        resetScene()
         
         self.audioPlayer.play()
     }
@@ -205,10 +205,10 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.understandLabel.font = font
         self.understandLabel.isHidden = false
         
-        resetAnimations()
+        resetScene()
     }
     
-    private func resetAnimations() {
+    private func resetScene() {
         self.boxNode?.removeAllActions()
         self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
         self.boxNode?.runAction(
@@ -283,7 +283,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         scene.rootNode.addChildNode(waveNode)
         self.waveNode = waveNode
         
-        resetAnimations()
+        resetScene()
         
         configureLight(scene)
         
