@@ -240,7 +240,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.waveNode?.runAction(
             SCNAction.repeatForever(
                 SCNAction.rotateBy(
-                    x: CGFloat.pi,
+                    x: -CGFloat.pi,
                     y: 0,
                     z: 0.2,
                     duration: 1.4
