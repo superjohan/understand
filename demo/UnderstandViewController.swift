@@ -291,16 +291,13 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     fileprivate func configureLight(_ scene: SCNScene) {
-        let omniLightNode = SCNNode()
-        omniLightNode.light = SCNLight()
-        omniLightNode.light?.type = SCNLight.LightType.omni
-        omniLightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        omniLightNode.light?.castsShadow = true
-        omniLightNode.light?.shadowRadius = 30
-        omniLightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
-        omniLightNode.light?.attenuationFalloffExponent = 0
-        omniLightNode.light?.intensity = 3000
-        omniLightNode.position = SCNVector3Make(-5, 5, 60)
-        scene.rootNode.addChildNode(omniLightNode)
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light?.type = SCNLight.LightType.directional
+        lightNode.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        lightNode.light?.castsShadow = true
+        lightNode.light?.shadowColor = UIColor(white: 0, alpha: 1.0)
+        lightNode.light?.intensity = 3000
+        scene.rootNode.addChildNode(lightNode)
     }
 }
