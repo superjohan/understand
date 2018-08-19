@@ -115,11 +115,11 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         camera.vignettingIntensity = 0.5
         camera.vignettingPower = 0.5
         camera.colorFringeStrength = 1
-//        camera.wantsDepthOfField = true
-//        camera.focusDistance = 0.075
-//        camera.fStop = 1
-//        camera.apertureBladeCount = 10
-//        camera.focalBlurSampleCount = 100
+        camera.wantsDepthOfField = true
+        camera.focusDistance = 0.075
+        camera.fStop = 1
+        camera.apertureBladeCount = 10
+        camera.focalBlurSampleCount = 100
         self.camera.camera = camera // lol
         
         let startButtonText =
@@ -204,6 +204,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isPlaying = true
         self.sceneView.isHidden = true
 
+        self.understandLabel.text = "UNDERSTAND"
         self.understandLabel.frame = self.view.bounds
         self.understandLabel.adjustsFontSizeToFitWidth = true
         self.understandLabel.font = UIFont.systemFont(ofSize: 400)
@@ -276,7 +277,18 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         guard let font = UIFont(name: fontName, size: 400) else { return }
         self.understandLabel.font = font
         self.understandLabel.isHidden = false
-        self.understandLabel.text = "UNDERSTAND"
+        
+        if self.position < 9 {
+            self.understandLabel.blurredText = "UNDERSTAND"
+        } else if self.position >= 9 && self.position < 24 {
+            self.understandLabel.text = "UNDERSTAND"
+            self.camera.camera?.focusDistance = 2.5
+            self.camera.camera?.fStop = 5.6
+        } else if self.position >= 24 && self.position < 33 {
+            self.understandLabel.blurredText = "UNDERSTAND"
+        } else {
+            self.understandLabel.text = "UNDERSTAND"
+        }
         
         resetScene()
         
