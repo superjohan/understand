@@ -282,12 +282,27 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             self.understandLabel.blurredText = "UNDERSTAND"
         } else if self.position >= 9 && self.position < 24 {
             self.understandLabel.text = "UNDERSTAND"
-            self.camera.camera?.focusDistance = 2.5
-            self.camera.camera?.fStop = 5.6
         } else if self.position >= 24 && self.position < 33 {
             self.understandLabel.blurredText = "UNDERSTAND"
         } else {
             self.understandLabel.text = "UNDERSTAND"
+        }
+        
+        if self.position == 9 {
+            let focusDistanceAnimation = CABasicAnimation(keyPath: "camera.focusDistance")
+            focusDistanceAnimation.toValue = 2.5
+            focusDistanceAnimation.duration = 2.0
+            self.camera.addAnimation(focusDistanceAnimation, forKey: "focus")
+            
+            let fStopAnimation = CABasicAnimation(keyPath: "camera.fStop")
+            fStopAnimation.toValue = 5.6
+            fStopAnimation.duration = 2.0
+            self.camera.addAnimation(fStopAnimation, forKey: "fStop")
+        }
+        
+        if self.position == 10 {
+            self.camera.camera?.focusDistance = 2.5
+            self.camera.camera?.fStop = 5.6
         }
         
         resetScene()
