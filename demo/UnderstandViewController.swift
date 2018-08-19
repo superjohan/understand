@@ -224,13 +224,6 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.audioPlayer.stop()
     }
     
-    // FIXME: remove
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        startButtonTouched(button: self.startButton)
-    }
-    
     // MARK: - Private
     
     @objc
