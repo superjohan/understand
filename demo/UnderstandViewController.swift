@@ -86,7 +86,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let camera = SCNNode()
     let startButton: UIButton
     let qtFoolingBgView: UIView = UIView.init(frame: .zero)
-    let understandLabel: UILabel = UILabel(frame: .zero)
+    let understandLabel: BlurredLabel = BlurredLabel(frame: .zero)
     let allFontNames: [String]
     
     var previousFontName: String? = nil
@@ -204,7 +204,6 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.sceneView.isPlaying = true
         self.sceneView.isHidden = true
 
-        self.understandLabel.text = "UNDERSTAND"
         self.understandLabel.frame = self.view.bounds
         self.understandLabel.adjustsFontSizeToFitWidth = true
         self.understandLabel.font = UIFont.systemFont(ofSize: 400)
@@ -275,6 +274,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         guard let font = UIFont(name: fontName, size: 400) else { return }
         self.understandLabel.font = font
         self.understandLabel.isHidden = false
+        self.understandLabel.text = "UNDERSTAND"
         
         resetScene()
         
