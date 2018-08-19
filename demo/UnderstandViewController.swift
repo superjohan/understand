@@ -89,6 +89,8 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     let understandLabel: BlurredLabel = BlurredLabel(frame: .zero)
     let allFontNames: [String]
     
+    var position: Int = 0
+
     var previousFontName: String? = nil
     var boxNode: SCNNode? = nil
     var sawNode: SCNNode? = nil
@@ -263,6 +265,8 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     
     @objc
     private func updateFont() {
+        self.position += 1
+        
         var fontName: String
         repeat {
             let index = Int(arc4random_uniform(UInt32(self.allFontNames.count)))
