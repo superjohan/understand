@@ -12,6 +12,75 @@ import SceneKit
 import Foundation
 
 class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
+    let colorSchemes = [
+        [
+            UIColor(red: (234.0 / 255.0), green: (223.0 / 255.0), blue: (195.0 / 255.0), alpha: 1.0),
+            UIColor(red: (245.0 / 255.0), green: (171.0 / 255.0), blue: (12.0 / 255.0), alpha: 1.0),
+            UIColor(red: (26.0 / 255.0), green: (157.0 / 255.0), blue: (213.0 / 255.0), alpha: 1.0),
+            UIColor(red: (222.0 / 255.0), green: (17.0 / 255.0), blue: (32.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (254.0 / 255.0), green: (244.0 / 255.0), blue: (82.0 / 255.0), alpha: 1.0),
+            UIColor(red: (204.0 / 255.0), green: (51.0 / 255.0), blue: (122.0 / 255.0), alpha: 1.0),
+            UIColor(red: (38.0 / 255.0), green: (27.0 / 255.0), blue: (107.0 / 255.0), alpha: 1.0),
+            UIColor(red: (255.0 / 255.0), green: (255.0 / 255.0), blue: (255.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (23.0 / 255.0), green: (77.0 / 255.0), blue: (203.0 / 255.0), alpha: 1.0),
+            UIColor(red: (237.0 / 255.0), green: (125.0 / 255.0), blue: (156.0 / 255.0), alpha: 1.0),
+            UIColor(red: (128.0 / 255.0), green: (146.0 / 255.0), blue: (192.0 / 255.0), alpha: 1.0),
+            UIColor(red: (89.0 / 255.0), green: (125.0 / 255.0), blue: (161.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (230.0 / 255.0), green: (55.0 / 255.0), blue: (42.0 / 255.0), alpha: 1.0),
+            UIColor(red: (44.0 / 255.0), green: (104.0 / 255.0), blue: (212.0 / 255.0), alpha: 1.0),
+            UIColor(red: (36.0 / 255.0), green: (77.0 / 255.0), blue: (37.0 / 255.0), alpha: 1.0),
+            UIColor(red: (229.0 / 255.0), green: (75.0 / 255.0), blue: (44.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (43.0 / 255.0), green: (87.0 / 255.0), blue: (40.0 / 255.0), alpha: 1.0),
+            UIColor(red: (236.0 / 255.0), green: (71.0 / 255.0), blue: (97.0 / 255.0), alpha: 1.0),
+            UIColor(red: (254.0 / 255.0), green: (252.0 / 255.0), blue: (92.0 / 255.0), alpha: 1.0),
+            UIColor(red: (201.0 / 255.0), green: (175.0 / 255.0), blue: (161.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (168.0 / 255.0), green: (173.0 / 255.0), blue: (168.0 / 255.0), alpha: 1.0),
+            UIColor(red: (249.0 / 255.0), green: (209.0 / 255.0), blue: (71.0 / 255.0), alpha: 1.0),
+            UIColor(red: (237.0 / 255.0), green: (72.0 / 255.0), blue: (56.0 / 255.0), alpha: 1.0),
+            UIColor(red: (68.0 / 255.0), green: (162.0 / 255.0), blue: (231.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (235.0 / 255.0), green: (92.0 / 255.0), blue: (151.0 / 255.0), alpha: 1.0),
+            UIColor(red: (70.0 / 255.0), green: (158.0 / 255.0), blue: (223.0 / 255.0), alpha: 1.0),
+            UIColor(red: (252.0 / 255.0), green: (241.0 / 255.0), blue: (81.0 / 255.0), alpha: 1.0),
+            UIColor(red: (127.0 / 255.0), green: (189.0 / 255.0), blue: (88.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (235.0 / 255.0), green: (224.0 / 255.0), blue: (194.0 / 255.0), alpha: 1.0),
+            UIColor(red: (52.0 / 255.0), green: (87.0 / 255.0), blue: (143.0 / 255.0), alpha: 1.0),
+            UIColor(red: (94.0 / 255.0), green: (148.0 / 255.0), blue: (55.0 / 255.0), alpha: 1.0),
+            UIColor(red: (207.0 / 255.0), green: (71.0 / 255.0), blue: (55.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (227.0 / 255.0), green: (36.0 / 255.0), blue: (28.0 / 255.0), alpha: 1.0),
+            UIColor(red: (184.0 / 255.0), green: (142.0 / 255.0), blue: (32.0 / 255.0), alpha: 1.0),
+            UIColor(red: (62.0 / 255.0), green: (6.0 / 255.0), blue: (5.0 / 255.0), alpha: 1.0),
+            UIColor(red: (254.0 / 255.0), green: (248.0 / 255.0), blue: (248.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (17.0 / 255.0), green: (24.0 / 255.0), blue: (32.0 / 255.0), alpha: 1.0),
+            UIColor(red: (139.0 / 255.0), green: (141.0 / 255.0), blue: (138.0 / 255.0), alpha: 1.0),
+            UIColor(red: (112.0 / 255.0), green: (198.0 / 255.0), blue: (233.0 / 255.0), alpha: 1.0),
+            UIColor(red: (255.0 / 255.0), green: (255.0 / 255.0), blue: (251.0 / 255.0), alpha: 1.0)
+        ],
+        [
+            UIColor(red: (133.0 / 255.0), green: (152.0 / 255.0), blue: (148.0 / 255.0), alpha: 1.0),
+            UIColor(red: (4.0 / 255.0), green: (4.0 / 255.0), blue: (4.0 / 255.0), alpha: 1.0),
+            UIColor(red: (251.0 / 255.0), green: (250.0 / 255.0), blue: (248.0 / 255.0), alpha: 1.0),
+            UIColor(red: (228.0 / 255.0), green: (44.0 / 255.0), blue: (32.0 / 255.0), alpha: 1.0)
+        ],
+    ]
+    
     let audioPlayer: AVAudioPlayer
     let sceneView = SCNView()
     let camera = SCNNode()
@@ -58,6 +127,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
                 "\n" +
                 "programming and music by ylvaes\n" +
                 "modeling by tohtori kannabispiikki\n" +
+                "jaakko helped with colors\n" +
                 "\n" +
                 "presented at jumalauta 18 years (2018)\n" +
                 "\n" +
