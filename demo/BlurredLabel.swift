@@ -26,7 +26,7 @@ class BlurredLabel: UILabel {
             
             let imageToBlur = CIImage(cgImage: image.cgImage!)
             blurFilter.setValue(imageToBlur, forKey: kCIInputImageKey)
-            blurFilter.setValue(30.0, forKey: "inputRadius")
+            blurFilter.setValue(50.0, forKey: "inputRadius")
             
             guard let outputImage = blurFilter.outputImage else { return }
             let croppedImage = outputImage.cropped(to: CGRect(x: 0, y: 0, width: self.bounds.size.width * image.scale, height: self.bounds.size.height * image.scale))
