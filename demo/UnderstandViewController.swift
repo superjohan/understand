@@ -259,12 +259,12 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let fontStartTime = 1.5
         
         for i in 0..<40 {
-            perform(#selector(updateFont), with: nil, afterDelay: (Double(i) * 2) + fontStartTime)
+            perform(#selector(updateScene), with: nil, afterDelay: (Double(i) * 2) + fontStartTime)
         }
     }
     
     @objc
-    private func updateFont() {
+    private func updateScene() {
         self.position += 1
         
         var fontName: String
