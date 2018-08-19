@@ -238,6 +238,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
+        self.sawNode?.position = SCNVector3Make(-40, 0, -10)
         self.sawNode?.removeAllActions()
         self.sawNode?.rotation = SCNVector4Make(0.2, 0.1, 0.2, 1)
         self.sawNode?.runAction(
@@ -251,6 +252,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
+        self.waveNode?.position = SCNVector3Make(-5, -25, -10)
         self.waveNode?.rotation = SCNVector4Make(0, 0, -2, 0.1)
         self.waveNode?.removeAllActions()
         self.waveNode?.runAction(
@@ -285,13 +287,11 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.boxNode = boxNode2
         
         let sawNode = loadModel(name: "saha", textureName: nil, color: .blue)
-        sawNode.position = SCNVector3Make(-40, 0, -10)
         sawNode.scale = SCNVector3Make(1.3, 1.3, 1.3)
         scene.rootNode.addChildNode(sawNode)
         self.sawNode = sawNode
         
         let waveNode = loadModel(name: "sini", textureName: nil, color: .yellow)
-        waveNode.position = SCNVector3Make(-5, -25, -10)
         waveNode.scale = SCNVector3Make(1.5, 1.5, 1.5)
         scene.rootNode.addChildNode(waveNode)
         self.waveNode = waveNode
