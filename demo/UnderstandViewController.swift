@@ -295,8 +295,11 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             SCNVector3Make(-5, -25, -10)
         ].shuffled()
         
+        let colorScheme = self.colorSchemes[Int(arc4random_uniform(UInt32(self.colorSchemes.count)))].shuffled()
+        
         self.boxNode?.removeAllActions()
         self.boxNode?.position = positions[0]
+        self.boxNode?.geometry?.firstMaterial?.diffuse.contents = colorScheme[0]
         self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
         self.boxNode?.runAction(
             SCNAction.repeatForever(
@@ -315,8 +318,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
-        self.sawNode?.position = positions[1]
         self.sawNode?.removeAllActions()
+        self.sawNode?.position = positions[1]
+        self.sawNode?.geometry?.firstMaterial?.diffuse.contents = colorScheme[1]
         self.sawNode?.rotation = SCNVector4Make(0.2, 0.1, 0.2, 1)
         self.sawNode?.runAction(
             SCNAction.repeatForever(
@@ -329,8 +333,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
-        self.waveNode?.position = positions[2]
         self.waveNode?.rotation = SCNVector4Make(0, 0, -2, 0.1)
+        self.waveNode?.position = positions[2]
+        self.waveNode?.geometry?.firstMaterial?.diffuse.contents = colorScheme[2]
         self.waveNode?.removeAllActions()
         self.waveNode?.runAction(
             SCNAction.repeatForever(
@@ -342,6 +347,8 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
                 )
             )
         )
+        
+        self.planeNode?.geometry?.firstMaterial?.multiply.contents = colorScheme[3]
     }
     
     fileprivate func createScene() -> SCNScene {
