@@ -291,7 +291,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         
         let positions = [
             SCNVector3Make(20, 20, 0),
-            SCNVector3Make(-40, 0, -10),
+            SCNVector3Make(-45, -15, 0),
             SCNVector3Make(-5, -25, -10)
         ]
         
@@ -373,7 +373,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.boxNode = boxNode2
         
         let sawNode = loadModel(name: "saha", textureName: nil, color: .blue)
-        sawNode.scale = SCNVector3Make(1.3, 1.3, 1.3)
+        sawNode.scale = SCNVector3Make(1.6, 1.6, 1.6)
         scene.rootNode.addChildNode(sawNode)
         self.sawNode = sawNode
         
