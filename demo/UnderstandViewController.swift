@@ -296,7 +296,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             
             let fStopAnimation = CABasicAnimation(keyPath: "camera.fStop")
             fStopAnimation.toValue = 5.6
-            fStopAnimation.duration = 2.0
+            fStopAnimation.duration = focusDistanceAnimation.duration
             self.camera.addAnimation(fStopAnimation, forKey: "fStop")
         }
         
