@@ -218,8 +218,14 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
         
+        let positions = [
+            SCNVector3Make(20, 20, 0),
+            SCNVector3Make(-40, 0, -10),
+            SCNVector3Make(-5, -25, -10)
+        ].shuffled()
+        
         self.boxNode?.removeAllActions()
-        self.boxNode?.position = SCNVector3Make(20, 20, 0)
+        self.boxNode?.position = positions[0]
         self.boxNode?.rotation = SCNVector4Make(0, 0, 0, 0)
         self.boxNode?.runAction(
             SCNAction.repeatForever(
@@ -238,7 +244,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
-        self.sawNode?.position = SCNVector3Make(-40, 0, -10)
+        self.sawNode?.position = positions[1]
         self.sawNode?.removeAllActions()
         self.sawNode?.rotation = SCNVector4Make(0.2, 0.1, 0.2, 1)
         self.sawNode?.runAction(
@@ -252,7 +258,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             )
         )
 
-        self.waveNode?.position = SCNVector3Make(-5, -25, -10)
+        self.waveNode?.position = positions[2]
         self.waveNode?.rotation = SCNVector4Make(0, 0, -2, 0.1)
         self.waveNode?.removeAllActions()
         self.waveNode?.runAction(
