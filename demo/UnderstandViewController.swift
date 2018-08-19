@@ -326,13 +326,29 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     
     private func resetScene() {
         self.camera.removeAllActions()
-        self.camera.position = SCNVector3Make(-5, 0, 58)
-        self.camera.runAction(
-            SCNAction.move(
-                by: SCNVector3Make(10, 0, 0),
-                duration: 2
+        if self.position >= 24 && self.position < 33 {
+            let positions = [
+                SCNVector3Make(20, 20, 40),
+                SCNVector3Make(-45, 0, 30),
+                SCNVector3Make(5, -25, 20)
+            ]
+            
+            self.camera.position = positions[Int(arc4random_uniform(UInt32(positions.count)))]
+            self.camera.runAction(
+                SCNAction.move(
+                    by: SCNVector3Make(10, 0, -5),
+                    duration: 2
+                )
             )
-        )
+        } else {
+            self.camera.position = SCNVector3Make(-5, 0, 58)
+            self.camera.runAction(
+                SCNAction.move(
+                    by: SCNVector3Make(10, 0, 0),
+                    duration: 2
+                )
+            )
+        }
         
         let positions = [
             SCNVector3Make(20, 20, 0),
