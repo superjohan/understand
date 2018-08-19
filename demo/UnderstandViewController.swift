@@ -280,8 +280,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         scene.rootNode.addChildNode(self.camera)
 
         // background
-        let plane = SCNPlane(width: 300, height: 250)
-        plane.firstMaterial?.diffuse.contents = UIColor.green
+        let plane = SCNPlane(width: 300, height: 300)
+        plane.firstMaterial?.diffuse.contents = UIImage(named: "checkerboard")
+        plane.firstMaterial?.multiply.contents = UIColor.green
         let planeNode = SCNNode(geometry: plane)
         planeNode.position = SCNVector3Make(0, 0, -24)
         scene.rootNode.addChildNode(planeNode)
