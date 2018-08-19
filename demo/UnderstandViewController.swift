@@ -320,7 +320,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
 
         self.sawNode?.removeAllActions()
         self.sawNode?.position = positions[1]
-        self.sawNode?.geometry?.firstMaterial?.diffuse.contents = colorScheme[1]
+        setColorInChildnodes(node: self.sawNode!, color: colorScheme[1])
         self.sawNode?.rotation = SCNVector4Make(0.2, 0.1, 0.2, 1)
         self.sawNode?.runAction(
             SCNAction.repeatForever(
@@ -335,7 +335,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
 
         self.waveNode?.rotation = SCNVector4Make(0, 0, -2, 0.1)
         self.waveNode?.position = positions[2]
-        self.waveNode?.geometry?.firstMaterial?.diffuse.contents = colorScheme[2]
+        setColorInChildnodes(node: self.waveNode!, color: colorScheme[2])
         self.waveNode?.removeAllActions()
         self.waveNode?.runAction(
             SCNAction.repeatForever(
