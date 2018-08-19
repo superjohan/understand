@@ -307,7 +307,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         
         resetScene()
         
-        perform(#selector(hideLabel), with: nil, afterDelay: 1.5)
+        perform(#selector(hideLabel), with: nil, afterDelay: 1)
     }
     
     @objc
