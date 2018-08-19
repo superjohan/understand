@@ -112,11 +112,9 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         
         let camera = SCNCamera()
         camera.zFar = 300
-//        camera.vignettingIntensity = 1
-//        camera.vignettingPower = 1
-//        camera.colorFringeStrength = 3
-//        camera.bloomIntensity = 1
-//        camera.bloomBlurRadius = 40
+        camera.vignettingIntensity = 0.5
+        camera.vignettingPower = 0.5
+        camera.colorFringeStrength = 1
 //        camera.wantsDepthOfField = true
 //        camera.focusDistance = 0.075
 //        camera.fStop = 1
