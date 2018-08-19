@@ -277,6 +277,13 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         self.understandLabel.isHidden = false
         
         resetScene()
+        
+        perform(#selector(hideLabel), with: nil, afterDelay: 1.5)
+    }
+    
+    @objc
+    private func hideLabel() {
+        self.understandLabel.isHidden = true
     }
     
     private func resetScene() {
