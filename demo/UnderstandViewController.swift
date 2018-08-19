@@ -93,6 +93,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     var boxNode: SCNNode? = nil
     var sawNode: SCNNode? = nil
     var waveNode: SCNNode? = nil
+    var planeNode: SCNNode? = nil
     
     // MARK: - UIViewController
     
@@ -356,6 +357,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
         let planeNode = SCNNode(geometry: plane)
         planeNode.position = SCNVector3Make(0, 0, -24)
         scene.rootNode.addChildNode(planeNode)
+        self.planeNode = planeNode
 
         let box2 = SCNBox(width: 20, height: 20, length: 20, chamferRadius: 0)
         box2.firstMaterial?.diffuse.contents = UIColor.red
