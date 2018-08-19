@@ -293,7 +293,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
             SCNVector3Make(20, 20, 0),
             SCNVector3Make(-40, 0, -10),
             SCNVector3Make(-5, -25, -10)
-        ].shuffled()
+        ]
         
         let colorScheme = self.colorSchemes[Int(arc4random_uniform(UInt32(self.colorSchemes.count)))].shuffled()
         
