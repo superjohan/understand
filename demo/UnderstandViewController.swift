@@ -100,7 +100,7 @@ class UnderstandViewController: UIViewController, SCNSceneRendererDelegate {
     // MARK: - UIViewController
     
     init() {
-        if let trackUrl = Bundle.main.url(forResource: "audio", withExtension: "m4a") {
+        if let trackUrl = Bundle.main.url(forResource: "understandaudio", withExtension: "m4a") {
             guard let audioPlayer = try? AVAudioPlayer(contentsOf: trackUrl) else {
                 abort()
             }
